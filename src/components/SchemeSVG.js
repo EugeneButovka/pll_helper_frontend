@@ -1,59 +1,7 @@
 import React from 'react';
-import {Container} from 'reactstrap';
-import set from 'lodash/set';
 
-export default class Scheme extends React.Component {
-    blocksNames = ["detector1", "amplitudeControl1"];
-    
-    generateBlocksInitialStates() {
-        let blocksInitialStates = {};
-        this.blocksNames.forEach((item, i) => {
-            blocksInitialStates[item] = {
-                id: i,
-                selected: false,
-                data: null,
-                parameters: null,
-            }
-        });
-        console.log('blocksInitialStates', blocksInitialStates);
-        return blocksInitialStates;
-    }
-    
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-            blocksState: this.generateBlocksInitialStates()
-            /*blocksState: {
-                detector1: {
-                    id: 0,
-                    selected: false, //or true
-                    data: null, // or {library:"", cell:"", view:"", cellType:""}
-                    parameters: null, //TODO parameters input
-                }
-            }*/
-        };
-    }
-    
-    getFill = (blockName) => {
-        if (!this.state.blocksState[blockName]) return 'yellow';
-        if (this.state.blocksState[blockName].selected) return 'grey';
-        if (this.state.blocksState[blockName].data) return 'green';
-        return 'white';
-    };
-    
-    parseClick = (blockName) => {
-        console.log('click: ', blockName);
-        if (!this.state.blocksState[blockName]) return;
-        this.setState((prevState) => set( //use lodash set to manipulate deeply nested state object
-            prevState,
-            `blocksState.${blockName}.selected`, // this could also be ['users', index, 'job']
-            true
-        ));
-    };
-    
-    
-    renderSvgComponent = () => (
+export default function SchemeSVG({onBlockClick, setBlockFill}) {
+    return (
         <svg
             id="prefix__svg5277"
             width={858.75}
@@ -112,12 +60,12 @@ export default class Scheme extends React.Component {
             <g id="prefix__g5275" transform="translate(-544.21 -324.25)">
                 <title id="prefix__title4750">{'Page-1'}</title>
                 <g id="prefix__detector1" transform="translate(658.49 -363.97)"
-                   onClick={() => {this.parseClick("detector1")}}>
+                   onClick={() => onBlockClick("detector1")}>
                     <title id="prefix__title4787">{'Rectangle.8'}</title>
                     <path
                         id="prefix__rect4791"
                         className="prefix__st1"
-                        fill={this.getFill("detector1")}
+                        fill={setBlockFill("detector1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -139,12 +87,12 @@ export default class Scheme extends React.Component {
                     </text>
                 </g>
                 <g id="prefix__amplitudeControl1" transform="translate(607.04 -363.97)"
-                   onClick={() => {this.parseClick("amplitudeControl1")}}>
+                   onClick={() => onBlockClick("amplitudeControl1")}>
                     <title id="prefix__title4806">{'Rectangle.11'}</title>
                     <path
                         id="prefix__rect4810"
                         className="prefix__st1"
-                        fill={this.getFill("amplitudeControl1")}
+                        fill={setBlockFill("amplitudeControl1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -1598,20 +1546,5 @@ export default class Scheme extends React.Component {
             </g>
         </svg>
     );
-    
-    
-    render() {
-        return (
-            <Container style={{
-                display: "flex",
-                flexDirection: 'column',
-                justifyContent: "center",
-                alignItems: "center",
-                //backgroundColor: "grey"
-            }}>
-                {/*<h1>scheme</h1>*/}
-                {this.renderSvgComponent()}
-            </Container>
-        );
-    }
 }
+;
