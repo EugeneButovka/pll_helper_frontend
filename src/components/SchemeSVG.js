@@ -96,7 +96,7 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M0 813.54h42.52v28.346H0z"
                     />
                     <text
@@ -121,16 +121,17 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         </tspan>
                     </text>
                 </g>
-                <g id="prefix__hfMultiplexsor1" transform="translate(704.98 -409.32)">
+                <g id="prefix__hfMultiplexsor1" transform="translate(704.98 -409.32)"
+                   onClick={() => onBlockClick("hfMultiplexsor1")}>
                     <title id="prefix__title4862">{'Rectangle.21'}</title>
                     <path
                         id="prefix__rect4866"
                         className="prefix__st1"
-                        fill="none"
+                        fill={setBlockFill("hfMultiplexsor1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M0 734.17h53.858v107.72H0z"
                     />
                     <text
@@ -164,16 +165,17 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         </tspan>
                     </text>
                 </g>
-                <g id="prefix__eclBuffer2" transform="matrix(1 0 0 -1 781.51 1230.5)">
+                <g id="prefix__eclBuffer2" transform="matrix(1 0 0 -1 781.51 1230.5)"
+                   onClick={() => onBlockClick("eclBuffer2")}>
                     <title id="prefix__title4875">{'Rectangle.22'}</title>
                     <path
                         id="prefix__rect4879"
                         className="prefix__st1"
-                        fill="none"
+                        fill={setBlockFill("eclBuffer2")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M0 796.53h31.181v45.354H0z"
                     />
                     <text
@@ -199,16 +201,17 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         </tspan>
                     </text>
                 </g>
-                <g id="prefix__eclBuffer1" transform="matrix(1 0 0 -1 781.51 1168.2)">
+                <g id="prefix__eclBuffer1" transform="matrix(1 0 0 -1 781.51 1168.2)"
+                   onClick={() => onBlockClick("eclBuffer1")}>
                     <title id="prefix__title4886">{'Rectangle.23'}</title>
                     <path
                         id="prefix__rect4890"
                         className="prefix__st1"
-                        fill="none"
+                        fill={setBlockFill("eclBuffer1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M0 796.53h31.181v45.354H0z"
                     />
                     <text
@@ -234,7 +237,8 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         </tspan>
                     </text>
                 </g>
-                <g id="prefix__vcoBlock1">
+                <g id="prefix__vcoBlock1"
+                   onClick={() => onBlockClick("vcoBlock1")}>
                     <g id="prefix__shape1-1" transform="translate(616.96 -471.68)">
                         <title id="prefix__title4752">{'Circle.56'}</title>
                         <path
@@ -313,12 +317,13 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         id="prefix__rect4784"
                         className="prefix__st1"
                         colorInterpolationFilters="sRGB"
-                        fill="none"
+                        fill={setBlockFill("vcoBlock1")}
+                        fill-opacity={".5"}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeMiterlimit={3}
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M608.46 324.85h53.858v107.72H608.46z"
                     />
                     <g id="prefix__shape42-149" transform="translate(639.78 -507.37)">
@@ -362,16 +367,17 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         </text>
                     </g>
                 </g>
-                <g id="prefix__devider1" transform="matrix(1 0 0 -1 833.96 1168.2)">
+                <g id="prefix__devider1" transform="matrix(1 0 0 -1 833.96 1168.2)"
+                   onClick={() => onBlockClick("devider1")}>
                     <title id="prefix__title5005">{'Rectangle.44'}</title>
                     <path
                         id="prefix__rect5009"
                         className="prefix__st1"
-                        fill="none"
+                        fill={setBlockFill("devider1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M0 796.53h31.181v45.354H0z"
                     />
                     <text
@@ -388,16 +394,17 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         {'/1, /2, /4'}
                     </text>
                 </g>
-                <g id="prefix__devider2" transform="matrix(1 0 0 -1 833.96 1230.5)">
+                <g id="prefix__devider2" transform="matrix(1 0 0 -1 833.96 1230.5)"
+                   onClick={() => onBlockClick("devider2")}>
                     <title id="prefix__title5043">{'Rectangle.50'}</title>
                     <path
                         id="prefix__rect5047"
                         className="prefix__st1"
-                        fill="none"
+                        fill={setBlockFill("devider2")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M0 796.53h31.181v45.354H0z"
                     />
                     <text
@@ -427,16 +434,17 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                 <g
                     id="prefix__eclToCmosBuffer1"
                     transform="matrix(1 0 0 -1 886.4 1230.5)"
+                    onClick={() => onBlockClick("eclToCmosBuffer1")}>
                 >
                     <title id="prefix__title5064">{'Rectangle.53'}</title>
                     <path
                         id="prefix__rect5068"
                         className="prefix__st1"
-                        fill="none"
+                        fill={setBlockFill("eclToCmosBuffer1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M0 796.53h31.181v45.354H0z"
                     />
                     <text
@@ -471,16 +479,17 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         </tspan>
                     </text>
                 </g>
-                <g id="prefix__cmosCounter2" transform="matrix(1 0 0 -1 938.84 1230.5)">
+                <g id="prefix__cmosCounter2" transform="matrix(1 0 0 -1 938.84 1230.5)"
+                   onClick={() => onBlockClick("cmosCounter2")}>
                     <title id="prefix__title5087">{'Rectangle.56'}</title>
                     <path
                         id="prefix__rect5091"
                         className="prefix__st1"
-                        fill="none"
+                        fill={setBlockFill("cmosCounter2")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M0 796.53h31.181v45.354H0z"
                     />
                     <text
@@ -506,16 +515,17 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         </tspan>
                     </text>
                 </g>
-                <g id="prefix__cmosCounter1" transform="matrix(1 0 0 -1 1045.1 1230.5)">
+                <g id="prefix__cmosCounter1" transform="matrix(1 0 0 -1 1045.1 1230.5)"
+                   onClick={() => onBlockClick("cmosCounter1")}>
                     <title id="prefix__title5117">{'Rectangle.60'}</title>
                     <path
                         id="prefix__rect5121"
                         className="prefix__st1"
-                        fill="none"
+                        fill={setBlockFill("cmosCounter1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M0 796.53h31.181v45.354H0z"
                     />
                     <text
@@ -541,29 +551,31 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         </tspan>
                     </text>
                 </g>
-                <g id="prefix__inputBuffer1" transform="rotate(-90 355.18 69.726)">
+                <g id="prefix__inputBuffer1" transform="rotate(-90 355.18 69.726)"
+                   onClick={() => onBlockClick("inputBuffer1")}>
                     <title id="prefix__title5133">{'Triangle.50'}</title>
                     <path
                         id="prefix__path5135"
                         className="prefix__st1"
                         d="M29.29 841.89l-15.7-27.45-15.69 27.45z"
-                        fill="none"
+                        fill={setBlockFill("inputBuffer1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                     />
                 </g>
-                <g id="prefix__passGate1" transform="translate(561.83 -440.5)">
+                <g id="prefix__passGate1" transform="translate(561.83 -440.5)"
+                   onClick={() => onBlockClick("passGate1")}>
                     <title id="prefix__title5166">{'Rectangle.67'}</title>
                     <path
                         id="prefix__rect5170"
                         className="prefix__st1"
-                        fill="none"
+                        fill={setBlockFill("passGate1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M0 796.53h31.181v45.354H0z"
                     />
                     <text
@@ -587,16 +599,17 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         </tspan>
                     </text>
                 </g>
-                <g id="prefix__currentSwitch1" transform="matrix(1 0 0 -1 991.28 1288.6)">
+                <g id="prefix__currentSwitch1" transform="matrix(1 0 0 -1 991.28 1288.6)"
+                   onClick={() => onBlockClick("currentSwitch1")}>
                     <title id="prefix__title5218">{'Rectangle.75'}</title>
                     <path
                         id="prefix__rect5222"
                         className="prefix__st1"
-                        fill="none"
+                        fill={setBlockFill("currentSwitch1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M0 810.71h31.181v31.181H0z"
                     />
                     <text
@@ -622,16 +635,17 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         </tspan>
                     </text>
                 </g>
-                <g id="prefix__externalLPF1" transform="matrix(1 0 0 -1 818.36 1328.3)">
+                <g id="prefix__externalLPF1" transform="matrix(1 0 0 -1 818.36 1328.3)"
+                   onClick={() => onBlockClick("externalLPF1")}>
                     <title id="prefix__title5239">{'Rectangle.78'}</title>
                     <path
                         id="prefix__rect5243"
                         className="prefix__st1"
-                        fill="none"
+                        fill={setBlockFill("externalLPF1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M0 810.71h31.181v31.181H0z"
                     />
                     <text
@@ -1495,15 +1509,15 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         strokeWidth={1.2}
                     />
                 </g>
-                <g id="prefix__pfd1">
+                <g id="prefix__pfd1" onClick={() => onBlockClick("pfd1")}>
                     <path
                         id="prefix__rect5107"
                         className="prefix__st1"
-                        fill="none"
+                        fill={setBlockFill("pfd1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={1.2}
+                        strokeWidth={2.2}
                         d="M991.28 433.99h31.181v-45.354H991.28z"
                     />
                     <text

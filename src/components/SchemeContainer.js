@@ -110,10 +110,11 @@ export default class SchemeContainer extends React.Component {
                 ...prevState.blocksState,
                 [this.state.currentlyEditedBlockName]: {
                     ...prevState.blocksState[this.state.currentlyEditedBlockName],
-                    data: currBlockData
-                }
+                    data: currBlockData,
+                    inputComplete: true
+                },
             }
-        }));
+        }), () => this.props.onSchemeDataChanged(this.state.blocksState));
     };
     
     
@@ -123,7 +124,14 @@ export default class SchemeContainer extends React.Component {
     
     renderDataFormForBlock() {
         return (
-            <Modal isOpen={this.state.isDataFormModalOpen} toggle={this.toggleDataFormModal} backdrop={true}>
+            <Modal
+                isOpen={this.state.isDataFormModalOpen}
+                toggle={this.toggleDataFormModal}
+                backdrop={true}
+                size="lg"
+                style={{maxWidth: '600px', width: '50%', maxHeight: '1000px', height: '90%'}}
+                scrollable
+            >
                 <ModalHeader toggle={this.toggleDataFormModal}>Modal title</ModalHeader>
                 <ModalBody>
                     <Label for={"dataFormModalInputLibrary"}>
