@@ -318,7 +318,7 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         className="prefix__st1"
                         colorInterpolationFilters="sRGB"
                         fill={setBlockFill("vcoBlock1")}
-                        fill-opacity={".5"}
+                        fillOpacity={".5"}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -367,13 +367,13 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         </text>
                     </g>
                 </g>
-                <g id="prefix__devider1" transform="matrix(1 0 0 -1 833.96 1168.2)"
-                   onClick={() => onBlockClick("devider1")}>
+                <g id="prefix__divider1" transform="matrix(1 0 0 -1 833.96 1168.2)"
+                   onClick={() => onBlockClick("divider1")}>
                     <title id="prefix__title5005">{'Rectangle.44'}</title>
                     <path
                         id="prefix__rect5009"
                         className="prefix__st1"
-                        fill={setBlockFill("devider1")}
+                        fill={setBlockFill("divider1")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -394,13 +394,13 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                         {'/1, /2, /4'}
                     </text>
                 </g>
-                <g id="prefix__devider2" transform="matrix(1 0 0 -1 833.96 1230.5)"
-                   onClick={() => onBlockClick("devider2")}>
+                <g id="prefix__divider2" transform="matrix(1 0 0 -1 833.96 1230.5)"
+                   onClick={() => onBlockClick("divider2")}>
                     <title id="prefix__title5043">{'Rectangle.50'}</title>
                     <path
                         id="prefix__rect5047"
                         className="prefix__st1"
-                        fill={setBlockFill("devider2")}
+                        fill={setBlockFill("divider2")}
                         stroke="#000"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -1399,7 +1399,7 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
                             y={-832.79}
                             fill="#000"
                             fontFamily="Arial"
-                            fontSize={9}
+                            fontSize={7}
                         >
                             {
                                 '\u041E\u043F\u043E\u0440\u043D\u044B\u0439 \u0432\u0445\u043E\u0434'

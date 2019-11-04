@@ -1,0 +1,9 @@
+//scheme operations
+export const INIT_SCHEME_REQUEST = 'INIT_SCHEME_REQUEST';
+export const INIT_SCHEME_SUCCESS = 'INIT_SCHEME_SUCCESS';
+export const INIT_SCHEME_FAIL = 'INIT_SCHEME_FAIL';
+
+export const SAVE_SCHEME_DATA = 'SAVE_SCHEME_DATA';
+export const SAVE_BLOCK_IN_SCHEME = 'SAVE_BLOCK_IN_SCHEME';
+
+
