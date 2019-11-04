@@ -81,7 +81,7 @@ class DataFormModal extends React.Component {
                 style={{maxWidth: '600px', width: '50%', maxHeight: '1000px', height: '90%'}}
                 scrollable
             >
-                <ModalHeader toggle={this.props.toggle}>Modal title</ModalHeader>
+                <ModalHeader toggle={this.props.toggle}>{this.props.blockName}</ModalHeader>
                 <ModalBody>
                     <Label for={"dataFormModalInputLibrary"}>
                         Library
