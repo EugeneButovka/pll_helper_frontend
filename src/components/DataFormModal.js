@@ -9,7 +9,11 @@ import {
     Container,
     Label,
     Input,
-    Alert
+    Alert,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
 } from 'reactstrap';
 import {saveBlockInScheme} from "../store/thunks/schemeThunks";
 
@@ -24,6 +28,26 @@ class DataFormModal extends React.Component {
             dataFormModalInputCellType: '',
         };
     }
+    
+    initModal = () => {
+        console.log('modal opened');
+        const {
+            library,
+            cell,
+            view,
+            cellType,
+        } = this.props.blocksData[this.props.blockName];
+    
+        console.log('blocks data', this.props.blocksData);
+        
+        
+        this.setState({
+            dataFormModalInputLibrary: library,
+            dataFormModalInputCell: cell,
+            dataFormModalInputView: view,
+            dataFormModalInputCellType: cellType,
+        }, () => console.log('this.state.dataFormModalInputLibrary',this.state.dataFormModalInputLibrary))
+    };
     
     
     /*setBlockDataToDataFormModal = () => {
@@ -54,23 +78,43 @@ class DataFormModal extends React.Component {
         this.setState({[e.target.name]: e.target.value});
     };
     
+    parseSelectLib = (e) => {
+        this.setState({dataFormModalInputLibrary: e.currentTarget.textContent});
+    };
+    
+    parseSelectCell = (e) => {
+        this.setState({dataFormModalInputCell: e.currentTarget.textContent});
+    };
+    
+    parseSelectView = (e) => {
+        this.setState({dataFormModalInputView: e.currentTarget.textContent});
+    };
+    
+    parseSelectCellType = (e) => {
+        this.setState({dataFormModalInputCellType: e.currentTarget.textContent});
+    };
+    
+    
     
     render() {
         if (!this.props.blocksData || !this.props.blocksData[this.props.blockName]) return null;
         const currentBlockData = this.props.blocksData[this.props.blockName];
+        //console.log('currentBlockData', currentBlockData);
+        
         const {
             dataFormModalInputLibrary,
             dataFormModalInputCell,
             dataFormModalInputView,
             dataFormModalInputCellType
-        } = currentBlockData;
-    
+        } = this.state;
+        
         const {
             library,
-                cell,
+            cell,
             view,
             cellType,
         } = currentBlockData;
+        
         
         return (
             <Modal
@@ -80,58 +124,81 @@ class DataFormModal extends React.Component {
                 size="lg"
                 style={{maxWidth: '600px', width: '50%', maxHeight: '1000px', height: '90%'}}
                 scrollable
+                onOpened={this.initModal}
             >
                 <ModalHeader toggle={this.props.toggle}>{this.props.blockName}</ModalHeader>
                 <ModalBody>
-                    <Label for={"dataFormModalInputLibrary"}>
+                    <Label>
                         Library
                     </Label>
-                    <Input
-                        type={"text"}
-                        name={"dataFormModalInputLibrary"}
-                        id={"dataFormModalInputLibrary"}
-                        placeholder={"enter block Library"}
-                        onChange={this.onDataFormModalInputChange}
-                        defaultValue={library}
-                    />
-                    
-                    <Label for={"dataFormModalInputCell"}>
+                    <UncontrolledDropdown>
+                        <DropdownToggle caret>
+                            {dataFormModalInputLibrary ? dataFormModalInputLibrary : 'no lib selected'}
+                        </DropdownToggle>
+                        <DropdownMenu>
+                            {Object.keys(this.props.blocksPresets).map((key, i) => (
+                                <DropdownItem key={i} onClick={this.parseSelectLib}>{key}</DropdownItem>
+                            ))}
+                        </DropdownMenu>
+                    </UncontrolledDropdown>
+    
+                    <Label>
                         Cell
                     </Label>
-                    <Input
-                        type={"text"}
-                        name={"dataFormModalInputCell"}
-                        id={"dataFormModalInputCell"}
-                        placeholder={"enter block Cell"}
-                        onChange={this.onDataFormModalInputChange}
-                        defaultValue={cell}
-                    />
-                    
-                    <Label for={"dataFormModalInputView"}>
+                    {dataFormModalInputLibrary ?
+                        <UncontrolledDropdown>
+                            <DropdownToggle caret>
+                                {dataFormModalInputCell ? dataFormModalInputCell : 'no cell selected'}
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                {Object.keys(this.props.blocksPresets[dataFormModalInputLibrary]).map((key, i) => (
+                                    <DropdownItem key={i} onClick={this.parseSelectCell}>{key}</DropdownItem>
+                                ))}
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
+                        :
+                        <UncontrolledDropdown>
+                            <DropdownToggle caret disabled>
+                                {'select lib first'}
+                            </DropdownToggle>
+                        </UncontrolledDropdown>
+                    }
+    
+                    <Label>
                         View
                     </Label>
-                    <Input
-                        type={"text"}
-                        name={"dataFormModalInputView"}
-                        id={"dataFormModalInputView"}
-                        placeholder={"enter block View"}
-                        onChange={this.onDataFormModalInputChange}
-                        defaultValue={view}
-                    />
-                    
-                    <Label for={"dataFormModalInputCellType"}>
-                        Cell Type
+                    {dataFormModalInputCell ?
+                        <UncontrolledDropdown>
+                            <DropdownToggle caret>
+                                {dataFormModalInputView ? dataFormModalInputView : 'no view selected'}
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                {this.props.blocksPresets[dataFormModalInputLibrary][dataFormModalInputCell].map((key, i) => (
+                                    <DropdownItem key={i} onClick={this.parseSelectView}>{key}</DropdownItem>
+                                ))}
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
+                        :
+                        <UncontrolledDropdown>
+                            <DropdownToggle caret disabled>
+                                {'select lib & cell first'}
+                            </DropdownToggle>
+                        </UncontrolledDropdown>
+                    }
+    
+                    <Label>
+                        View type
                     </Label>
-                    <Input
-                        type={"text"}
-                        name={"dataFormModalInputCellType"}
-                        id={"dataFormModalInputCellType"}
-                        placeholder={"enter block Cell Type"}
-                        onChange={this.onDataFormModalInputChange}
-                        defaultValue={cellType}
-                    />
-                
-                
+                    <UncontrolledDropdown>
+                        <DropdownToggle caret>
+                            {dataFormModalInputCellType ? dataFormModalInputCellType : 'no cell type selected'}
+                        </DropdownToggle>
+                        <DropdownMenu>
+                            {this.props.blocksCellTypes.map((key, i) => (
+                                <DropdownItem key={i} onClick={this.parseSelectCellType}>{key}</DropdownItem>
+                            ))}
+                        </DropdownMenu>
+                    </UncontrolledDropdown>
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" onClick={this.parsePressSetModal}>Set</Button>
@@ -144,6 +211,8 @@ class DataFormModal extends React.Component {
 
 const mapStateToProps = (state) => ({
     blocksData: state.schemeStore.blocksData,
+    blocksPresets: state.schemeStore.blocksPresets,
+    blocksCellTypes: state.schemeStore.blocksCellTypes,
 });
 
 export default connect(mapStateToProps, {saveBlockInScheme})(DataFormModal);

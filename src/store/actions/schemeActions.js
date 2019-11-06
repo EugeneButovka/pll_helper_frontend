@@ -13,9 +13,9 @@ export const initSchemeRequestAction = () => ({
     type: INIT_SCHEME_REQUEST,
 });
 
-export const initSchemeSuccessAction = (payload) => ({
+export const initSchemeSuccessAction = (presets, cellTypes, blocksData) => ({
     type: INIT_SCHEME_SUCCESS,
-    payload: payload
+    payload: {presets, cellTypes, blocksData}
 });
 
 export const initSchemeFailAction = (payload) => ({

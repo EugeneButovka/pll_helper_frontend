@@ -64,7 +64,8 @@ class SchemeContainer extends React.Component {
             }}>
                 {/*<h1>scheme</h1>*/}
                 <SchemeSVG onBlockClick={this.parseBlockClick} setBlockFill={this.parseBlockFill}/>
-                <DataFormModal visible={this.state.isDataFormModalOpen} toggle={this.toggleDataFormModal} blockName={this.state.currentlyEditedBlockName}/>
+                <DataFormModal visible={this.state.isDataFormModalOpen} toggle={this.toggleDataFormModal}
+                               blockName={this.state.currentlyEditedBlockName}/>
             </Container>
         );
     }

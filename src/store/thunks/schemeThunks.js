@@ -10,7 +10,7 @@ import {
 } from '../actions/schemeActions';
 
 
-const generateBlocksInitialStates = () => async (dispatch, getState) => {
+const generateBlocksInitialStates = () => (dispatch, getState) => {
     const {blocksNames} = getState().schemeStore;
     console.log('getState()', getState());
     
@@ -20,12 +20,10 @@ const generateBlocksInitialStates = () => async (dispatch, getState) => {
             id: i,
             //selected: false,
             name: item,
-            data: {
-                library: "$DEFAULT_LIB",
-                cell: "$DEFAULT_CELL",
-                view: "$DEFAULT_VIEW",
-                cellType: "$DEFAULT_CELL_TYPE"
-            },
+            library: "",
+            cell: "",
+            view: "",
+            cellType: "",
             parameters: null,
             inputComplete: false
         }
@@ -41,12 +39,13 @@ export const initScheme = () => async dispatch => {
     
     //requesting scheme data selectors presets form server
     try {
-        //const res = await cadServer.get('/scheme/presets');
+        const presetsResponse = await cadServer.get('/presets');
+        const cellTypesResponse = await cadServer.get('/celltypes');
+        console.log('cellTypesResponse', cellTypesResponse);
+        const defaultBlocksData = dispatch(generateBlocksInitialStates());//TODO: replace for network get
+        dispatch(initSchemeSuccessAction(presetsResponse.data.presets, cellTypesResponse.data.celltypes , defaultBlocksData));
         
-        const res = await dispatch(generateBlocksInitialStates());//TODO: replace for network get
-        dispatch(initSchemeSuccessAction(res));
-        
-        console.log('init scheme success: ', res);
+        console.log('init scheme success');
         //dispatch(initSchemeSuccessAction(res.data));
     } catch (error) {
         console.log('init scheme error: ', error);

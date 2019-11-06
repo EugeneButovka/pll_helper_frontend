@@ -12,6 +12,7 @@ const initialState = {
     isLoading: false,
     requestCompleted: false,
     blocksPresets: {},
+    blocksCellTypes: {},
     blocksData: null,
     blocksNames: ["detector1", "amplitudeControl1"]
     
@@ -29,8 +30,9 @@ export default function (state = initialState, action) {
                 ...state,
                 error: null,
                 isLoading: false,
-                //blocksPresets: action.payload,
-                blocksData: action.payload,
+                blocksPresets: action.payload.presets,
+                blocksCellTypes: action.payload.cellTypes,
+                blocksData: action.payload.blocksData,
                 requestCompleted: true
             };
         case INIT_SCHEME_FAIL:
