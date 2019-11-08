@@ -14,7 +14,9 @@ const initialState = {
     blocksPresets: {},
     blocksCellTypes: {},
     blocksData: null,
-    blocksNames: ["detector1", "amplitudeControl1"]
+    blocksNames: ["detector1", "amplitudeControl1"],
+    vcoCharacterizationStatus: 'NOT_CHARACTERIZED',
+    vcoCharacterizationInfo: '',
     
 };
 

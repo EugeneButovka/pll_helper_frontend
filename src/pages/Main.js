@@ -5,7 +5,9 @@ import {
     Container,
     Button,
     Label,
-    Input, ModalBody,
+    Input,
+    Row,
+    Col
 } from "reactstrap";
 import {initScheme} from '../store/thunks/schemeThunks'
 import connect from "react-redux/es/connect/connect";
@@ -19,112 +21,213 @@ class Main extends Component {
     
     
     renderStatus() {
+        return (
+            <Container>
+                <Row>
+                    <Col md={{offset: 4 }}>
+                            <b>Current status: </b>
+                            {'ready'}
+                    </Col>
+                </Row>
+                
+                {/*<Row><Col><br/></Col></Row>*/}
+                
+                <Row>
+                    <Col  xs="6"  md={{offset: 3 }}>
+                        <Button color="primary" block size={'sm'} onClick={{/*this.parsePressSetModal*/}}>
+                            Bulid model
+                        </Button>
+                    </Col>
+                </Row>
     
+                <Row><Col><br/><br/></Col></Row>
+                
+                <Row>
+                    <Col  xs="6" md={{offset: 3 }}>
+                        <Button color="primary" block size={'sm'} onClick={{/*this.parsePressSetModal*/}}>
+                            Plot characteristics
+                        </Button>
+                    </Col>
+                </Row>
+            </Container>
+        )
     };
     
     renderParameterInputs() {
+        const vcoCharacterizationStatus = (this.props.scheme);
+        
         return (
-            <div
-                style={{
-                    display: "flex",
-                    width: '100%',
-                    flexDirection: 'column',
-                    //justifyContent: "flex-start",
-                    //alignItems: "flex-start",
-                    //height: '20vh',
-                    //maxHeight: '1200px'
-                    margin: '20px',
-                }}
-            >
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: 'row',
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                >
-                    <Label for={"parameterInputVcoBlock1Frequency"} style={{display: "inline-block", whiteSpace: 'nowrap', width: '350px'}}>
-                        {'VCO frequency (xGHz - xxGhz)'}
-                    </Label>
-                    <Button color="primary" onClick={{/*this.parsePressSetModal*/}} style={{display: "inline-block", marginLeft: '25px'}}>Characterize</Button>
-                    <Input
-                        type={"text"}
-                        name={"parameterInputVcoBlock1Frequency"}
-                        id={"parameterInputVcoBlock1Frequency"}
-                        placeholder={"enter VCO frequency"}
-                        //onChange={this.onDataFormModalInputChange}
-                        //defaultValue={library}
-                    />
-                    <Button color="primary" onClick={{/*this.parsePressSetModal*/}}>Set</Button>
-                </div>
+            <Container>
+                <Row>
+                    <Col md={{offset: 5 }}>
+                        <b>
+                            {'VCO'}
+                        </b>
+                    </Col>
+                </Row>
+                
+                <Row>
+                    <Col xs="9">
+                        <p>
+                            {'Characterization status: '}
+                            <u>{this.props.scheme.vcoCharacterizationStatus}</u>
+                        </p>
+                    </Col>
+                    <Col  xs="3">
+                        <Button color="primary" block size={'sm'} onClick={{/*this.parsePressSetModal*/}}>
+                            Characterize
+                        </Button>
+                    </Col>
+                </Row>
+                
+                <Row>
+                    <Col xs="12">
+                        <p>
+                            {'Characterization info: '}
+                            <u>{this.props.scheme.vcoCharacterizationInfo ? this.props.scheme.vcoCharacterizationInfo : 'none'}</u>
+                        </p>
+                    </Col>
+                </Row>
+                
+                <Row>
+                    <Col xs="6">
+                        <Label for={"parameterInputVcoBlock1Frequency"}>
+                            {'VCO frequency'}
+                        </Label>
+                    </Col>
+                    <Col xs="6">
+                        <Input
+                            size={'sm'}
+                            type={"text"}
+                            name={"parameterInputVcoBlock1Frequency"}
+                            id={"parameterInputVcoBlock1Frequency"}
+                            //placeholder={"enter VCO frequency"}
+                            //onChange={this.onDataFormModalInputChange}
+                            //defaultValue={library}
+                        />
+                    </Col>
+                    {/*<Col xs="3">*/}
+                        {/*<Button color="primary" block  size={'sm'} onClick={/!*this.parsePressSetModal*!/}>Set</Button>*/}
+                    {/*</Col>*/}
+                </Row>
+                
+                <Row><Col><hr/></Col></Row>
+                
+                <Row>
+                    <Col xs="6">
+                        <Label for={"parameterInputCompFrequency"}>
+                            {'Comparison frequency'}
+                        </Label>
+                    </Col>
+                    <Col xs="6">
+                        <Input
+                            size={'sm'}
+                            type={"text"}
+                            name={"parameterInputCompFrequency"}
+                            id={"parameterInputCompFrequency"}
+                            //placeholder={"enter comparison frequency"}
+                            //onChange={this.onDataFormModalInputChange}
+                            //defaultValue={library}
+                        />
+                    </Col>
+                </Row>
     
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: 'row',
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                >
-                    <Label for={"parameterInputCompFrequency"} style={{display: "inline-block", whiteSpace: 'nowrap', width: '350px'}}>
-                        {'Comparison frequency'}
-                    </Label>
-                    <Input
-                        type={"text"}
-                        name={"parameterInputCompFrequency"}
-                        id={"parameterInputCompFrequency"}
-                        placeholder={"enter comparison frequency"}
-                        //onChange={this.onDataFormModalInputChange}
-                        //defaultValue={library}
-                    />
-                    <Button color="primary" onClick={{/*this.parsePressSetModal*/}}>Set</Button>
-                </div>
+                <Row>
+                    <Col xs="6">
+                        <Label for={"parameterInputRefFrequency"}>
+                            {'Reference frequency'}
+                        </Label>
+                    </Col>
+                    <Col xs="6">
+                        <Input
+                            size={'sm'}
+                            type={"text"}
+                            name={"parameterInputRefFrequency"}
+                            id={"parameterInputRefFrequency"}
+                            //placeholder={"ref frequency"}
+                            //onChange={this.onDataFormModalInputChange}
+                            //defaultValue={library}
+                        />
+                    </Col>
+                </Row>
     
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: 'row',
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                >
-                    <Label for={"parameterInputRefFrequency"} style={{display: "inline-block", whiteSpace: 'nowrap', width: '350px'}}>
-                        {'Reference frequency'}
-                    </Label>
-                    <Input
-                        type={"text"}
-                        name={"parameterInputRefFrequency"}
-                        id={"parameterInputRefFrequency"}
-                        placeholder={"enter reference frequency"}
-                        //onChange={this.onDataFormModalInputChange}
-                        //defaultValue={library}
-                    />
-                    <Button color="primary" onClick={{/*this.parsePressSetModal*/}}>Set</Button>
-                </div>
+                <Row>
+                    <Col xs="6">
+                        <Label for={"parameterInputRefFrequencyPower"}>
+                            {'Reference frequency power'}
+                        </Label>
+                    </Col>
+                    <Col xs="6">
+                        <Input
+                            size={'sm'}
+                            type={"text"}
+                            name={"parameterInputRefFrequencyPower"}
+                            id={"parameterInputRefFrequencyPower"}
+                            //placeholder={"ref freq pow"}
+                            //onChange={this.onDataFormModalInputChange}
+                            //defaultValue={library}
+                        />
+                    </Col>
+                </Row>
     
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: 'row',
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                >
-                    <Label for={"parameterInputRefFrequencyPower"} style={{display: "inline-block", whiteSpace: 'nowrap', width: '350px'}}>
-                        {'Reference frequency power'}
-                    </Label>
-                    <Input
-                        type={"text"}
-                        name={"parameterInputRefFrequencyPower"}
-                        id={"parameterInputRefFrequencyPower"}
-                        placeholder={"enter reference frequency power"}
-                        //onChange={this.onDataFormModalInputChange}
-                        //defaultValue={library}
-                    />
-                    <Button color="primary" onClick={{/*this.parsePressSetModal*/}}>Set</Button>
-                </div>
-            </div>
+                <Row><Col><hr/></Col></Row>
+    
+                <Row>
+                    <Col xs="3">
+                        <Label>
+                            {'External LPF'}
+                        </Label>
+                    </Col>
+                    <Col xs="1">
+                        <b>
+                            {'R1'}
+                        </b>
+                    </Col>
+                    <Col xs="2">
+                        <Input
+                            size={'sm'}
+                            type={"text"}
+                            name={"parameterInputExternalLPF1R1"}
+                            id={"parameterInputExternalLPF1R1"}
+                            //placeholder={"ref freq pow"}
+                            //onChange={this.onDataFormModalInputChange}
+                            //defaultValue={library}
+                        />
+                    </Col>
+                    <Col xs="1">
+                        <b>
+                            {'C1'}
+                        </b>
+                    </Col>
+                    <Col xs="2">
+                        <Input
+                            size={'sm'}
+                            type={"text"}
+                            name={"parameterInputExternalLPF1C1"}
+                            id={"parameterInputExternalLPF1C1"}
+                            //placeholder={"ref freq pow"}
+                            //onChange={this.onDataFormModalInputChange}
+                            //defaultValue={library}
+                        />
+                    </Col>
+                    <Col xs="1">
+                        <b>
+                            {'C2'}
+                        </b>
+                    </Col>
+                    <Col xs="2">
+                        <Input
+                            size={'sm'}
+                            type={"text"}
+                            name={"parameterInputExternalLPF1C2"}
+                            id={"parameterInputExternalLPF1C2"}
+                            //placeholder={"ref freq pow"}
+                            //onChange={this.onDataFormModalInputChange}
+                            //defaultValue={library}
+                        />
+                    </Col>
+                </Row>
+            </Container>
         )
     };
     
@@ -141,8 +244,17 @@ class Main extends Component {
                     //maxHeight: '1200px'
                 }}>
                 <SchemeContainer/>
-                {this.renderParameterInputs()}
-                {this.renderStatus()}
+                
+                <div style={{display: 'flex', flexDirection: 'row', width: '100%'}}>
+                    <div style={{width: '50%'}}>
+                        {this.renderParameterInputs()}
+                    </div>
+                    <div style={{backgroundColor:'#dbdbdb', width: '1px'}}>
+                    </div>
+                    <div style={{width: '50%'}}>
+                        {this.renderStatus()}
+                    </div>
+                </div>
             </Container>
         );
     }
