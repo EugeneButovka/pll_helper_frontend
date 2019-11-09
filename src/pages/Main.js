@@ -9,42 +9,77 @@ import {
     Row,
     Col
 } from "reactstrap";
-import {initScheme} from '../store/thunks/schemeThunks'
+import {initScheme, characterizeVCO, saveParameters , getModelData} from '../store/thunks/schemeThunks'
 import connect from "react-redux/es/connect/connect";
 
 class Main extends Component {
     constructor(props) {
         super(props);
+    
+        this.state = {
+            parameterInputVcoBlock1Frequency: '',
+            parameterInputCompFrequency: '',
+            parameterInputRefFrequency: '',
+            parameterInputRefFrequencyPower: '',
+    
+            parameterInputExternalLPF1R1: '',
+            parameterInputExternalLPF1C1: '',
+            parameterInputExternalLPF1C2: '',
+        };
         
         this.props.initScheme();
     }
     
+    onParameterInputChange = (e) => {
+        this.setState({[e.target.name]: e.target.value});
+    };
+    
+    parseBuildModel = () => {
+        const newParameters = {
+            vcoFreq: this.state.parameterInputVcoBlock1Frequency,
+            compFreq: this.state.parameterInputCompFrequency,
+            refFreq: this.state.parameterInputRefFrequency,
+            refFreqPow: this.state.parameterInputRefFrequencyPower,
+            
+            lpfR1: this.state.parameterInputExternalLPF1R1,
+            lpfC1: this.state.parameterInputExternalLPF1C1,
+            lpfC2: this.state.parameterInputExternalLPF1C2,
+        };
+        
+        this.props.saveParameters(newParameters); //synchronical action
+        this.props.getModelData(); //synchronical action
+    };
+    
+    parsePlotGraph = () => {
+        const plotData = this.props.scheme.buildModelData;
+        console.log('plotData', plotData);
+    };
     
     renderStatus() {
         return (
             <Container>
                 <Row>
-                    <Col md={{offset: 4 }}>
-                            <b>Current status: </b>
-                            {'ready'}
+                    <Col md={{offset: 3 }}>
+                            <b>Model status: </b>
+                            {this.props.scheme.buildModelStatus}
                     </Col>
                 </Row>
                 
-                {/*<Row><Col><br/></Col></Row>*/}
+                <Row><Col><br/></Col></Row>
                 
                 <Row>
                     <Col  xs="6"  md={{offset: 3 }}>
-                        <Button color="primary" block size={'sm'} onClick={{/*this.parsePressSetModal*/}}>
+                        <Button color="primary" block size={'sm'} onClick={this.parseBuildModel}>
                             Bulid model
                         </Button>
                     </Col>
                 </Row>
     
-                <Row><Col><br/><br/></Col></Row>
+                <Row><Col><br/></Col></Row>
                 
                 <Row>
                     <Col  xs="6" md={{offset: 3 }}>
-                        <Button color="primary" block size={'sm'} onClick={{/*this.parsePressSetModal*/}}>
+                        <Button color="primary" block size={'sm'} onClick={this.parsePlotGraph}>
                             Plot characteristics
                         </Button>
                     </Col>
@@ -74,7 +109,7 @@ class Main extends Component {
                         </p>
                     </Col>
                     <Col  xs="3">
-                        <Button color="primary" block size={'sm'} onClick={{/*this.parsePressSetModal*/}}>
+                        <Button color="primary" block size={'sm'} onClick={this.props.characterizeVCO}>
                             Characterize
                         </Button>
                     </Col>
@@ -102,7 +137,7 @@ class Main extends Component {
                             name={"parameterInputVcoBlock1Frequency"}
                             id={"parameterInputVcoBlock1Frequency"}
                             //placeholder={"enter VCO frequency"}
-                            //onChange={this.onDataFormModalInputChange}
+                            onChange={this.onParameterInputChange}
                             //defaultValue={library}
                         />
                     </Col>
@@ -126,7 +161,7 @@ class Main extends Component {
                             name={"parameterInputCompFrequency"}
                             id={"parameterInputCompFrequency"}
                             //placeholder={"enter comparison frequency"}
-                            //onChange={this.onDataFormModalInputChange}
+                            onChange={this.onParameterInputChange}
                             //defaultValue={library}
                         />
                     </Col>
@@ -145,7 +180,7 @@ class Main extends Component {
                             name={"parameterInputRefFrequency"}
                             id={"parameterInputRefFrequency"}
                             //placeholder={"ref frequency"}
-                            //onChange={this.onDataFormModalInputChange}
+                            onChange={this.onParameterInputChange}
                             //defaultValue={library}
                         />
                     </Col>
@@ -264,4 +299,9 @@ const mapStateToProps = (state) => ({
     scheme: state.schemeStore,
 });
 
-export default connect(mapStateToProps, {initScheme})(Main);
+export default connect(mapStateToProps, {
+    initScheme,
+    characterizeVCO,
+    saveParameters ,
+    getModelData
+})(Main);

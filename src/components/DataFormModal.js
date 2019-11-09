@@ -69,6 +69,11 @@ class DataFormModal extends React.Component {
             view: this.state.dataFormModalInputView,
             cellType: this.state.dataFormModalInputCellType,
         };
+        //simple validation
+        for (let key in newBlockData) if (newBlockData[key] === '') {
+            alert("wrong input data");
+            return;
+        }
         
         this.props.saveBlockInScheme(this.props.blockName, newBlockData);
         this.props.toggle();

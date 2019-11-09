@@ -14,6 +14,7 @@ import {
 import SchemeSVG from "./SchemeSVG";
 import DataFormModal from "./DataFormModal";
 
+
 class SchemeContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -25,9 +26,9 @@ class SchemeContainer extends React.Component {
     }
     
     parseBlockFill = (blockName) => {
-        if (!this.props.scheme.blocksData || !this.props.scheme.blocksData[blockName]) return 'yellow';
-        if (blockName === this.state.currentlyEditedBlockName && this.state.isDataFormModalOpen) return 'grey';
-        if (this.props.scheme.blocksData[blockName].inputComplete) return 'green';
+        if (!this.props.scheme.blocksData || !this.props.scheme.blocksData[blockName]) return '#dedede';
+        if (blockName === this.state.currentlyEditedBlockName && this.state.isDataFormModalOpen) return '#FFF';
+        if (this.props.scheme.blocksData[blockName].inputComplete) return 'rgba(107,162,22,10)';
         return 'white';
     };
     

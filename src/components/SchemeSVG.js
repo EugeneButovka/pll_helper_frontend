@@ -4,8 +4,9 @@ export default function SchemeSVG({onBlockClick, setBlockFill}) {
     return (
         <svg
             id="prefix__svg5277"
-            width={858.75}
-            height={258.6}
+            //width={858.75}
+            width={'100%'}
+            //height={258.6}
             colorInterpolationFilters="sRGB"
             fill="none"
             fillRule="evenodd"
