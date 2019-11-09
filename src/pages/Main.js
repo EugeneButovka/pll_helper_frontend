@@ -11,12 +11,15 @@ import {
 } from "reactstrap";
 import {initScheme, characterizeVCO, saveParameters , getModelData} from '../store/thunks/schemeThunks'
 import connect from "react-redux/es/connect/connect";
+import PlotModal from "./PlotModal";
 
 class Main extends Component {
     constructor(props) {
         super(props);
     
         this.state = {
+            isPlotModalOpen: false,
+            
             parameterInputVcoBlock1Frequency: '',
             parameterInputCompFrequency: '',
             parameterInputRefFrequency: '',
@@ -29,6 +32,9 @@ class Main extends Component {
         
         this.props.initScheme();
     }
+    
+    togglePlotModal = () => this.setState({isPlotModalOpen: !this.state.isPlotModalOpen});
+    openPlotModal = () => this.setState({isPlotModalOpen: true,});
     
     onParameterInputChange = (e) => {
         this.setState({[e.target.name]: e.target.value});
@@ -53,6 +59,7 @@ class Main extends Component {
     parsePlotGraph = () => {
         const plotData = this.props.scheme.buildModelData;
         console.log('plotData', plotData);
+        this.openPlotModal();
     };
     
     renderStatus() {
@@ -290,6 +297,7 @@ class Main extends Component {
                         {this.renderStatus()}
                     </div>
                 </div>
+                <PlotModal toggle={this.togglePlotModal} visible={this.state.isPlotModalOpen}/>
             </Container>
         );
     }

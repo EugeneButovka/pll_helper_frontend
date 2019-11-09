@@ -12,7 +12,7 @@ import {
     Alert
 } from 'reactstrap';
 import SchemeSVG from "./SchemeSVG";
-import DataFormModal from "./DataFormModal";
+import DataFormModal from "../pages/DataFormModal";
 
 
 class SchemeContainer extends React.Component {

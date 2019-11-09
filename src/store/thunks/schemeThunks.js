@@ -82,7 +82,6 @@ export const saveParameters = parametersData => async dispatch => {
 };
 
 
-
 export const characterizeVCO = () => async (dispatch, getState) => {
     console.log('get vco char request');
     dispatch(characterizeVCORequestAction());
@@ -119,7 +118,10 @@ export const getModelData = () => async (dispatch, getState) => {
     console.log('get model data request');
     dispatch(getModelDataRequestAction());
     
-    const VCOInputData = getState().schemeStore.blocksData;
+    const VCOInputData = {
+        blocksData: getState().schemeStore.blocksData,
+        parameters: getState().schemeStore.parametersData
+    };
     
     //requesting vco characterization data with polling pattern
     let modelRes = null;
