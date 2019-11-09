@@ -284,6 +284,7 @@ class Main extends Component {
                     alignItems: "center",
                     //height: '20vh',
                     //maxHeight: '1200px'
+                    paddingTop: '20px',
                 }}>
                 <SchemeContainer/>
                 

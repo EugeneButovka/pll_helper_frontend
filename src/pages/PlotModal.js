@@ -56,7 +56,7 @@ class PlotModal extends React.Component {
                 style={{maxWidth: '600px', width: '50%', maxHeight: '1000px', height: '90%'}}
                 scrollable
             >
-                {/*<ModalHeader toggle={this.props.toggle}>{'Plot'}</ModalHeader>*/}
+                <ModalHeader toggle={this.props.toggle}>{'Plot'}</ModalHeader>
                 <ModalBody>
                     {/*<Plot*/}
                     {/*data={[this.props.plotData,]}*/}
